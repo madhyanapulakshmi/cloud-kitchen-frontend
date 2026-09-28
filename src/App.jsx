@@ -304,136 +304,145 @@ function AppContent() {
     user?.role === "ADMIN";
 
   // ========================================
+  // ADMIN PAGE CHECK
+  // ========================================
+
+  const isAdminPage =
+    location.pathname === "/admin";
+
+  // ========================================
   // NAVBAR
   // ========================================
 
   return (
     <div className="app">
 
-      <header className="navbar">
+      {!isAdminPage && (
+        <header className="navbar">
 
-        {/* LOGO */}
-
-        <Link
-          to="/"
-          className="logo"
-        >
-          🍴 CloudKitchen
-        </Link>
-
-        {/* NAVIGATION */}
-
-        <nav className="nav-links">
+          {/* LOGO */}
 
           <Link
             to="/"
-            className={
-              location.pathname === "/"
-                ? "active"
-                : ""
-            }
+            className="logo"
           >
-            Home
+            🍴 CloudKitchen
           </Link>
 
-          <Link
-            to="/menu"
-            className={
-              location.pathname ===
-              "/menu"
-                ? "active"
-                : ""
-            }
-          >
-            Menu
-          </Link>
+          {/* NAVIGATION */}
 
-          {user && (
+          <nav className="nav-links">
+
             <Link
-              to="/orders"
+              to="/"
               className={
-                location.pathname ===
-                "/orders"
+                location.pathname === "/"
                   ? "active"
                   : ""
               }
             >
-              Orders
+              Home
             </Link>
-          )}
 
-          {user && (
             <Link
-              to="/profile"
+              to="/menu"
               className={
                 location.pathname ===
-                "/profile"
+                "/menu"
                   ? "active"
                   : ""
               }
             >
-              Profile
+              Menu
             </Link>
-          )}
 
-          {isAdmin && (
-            <Link
-              to="/admin"
-              className={
-                location.pathname ===
-                "/admin"
-                  ? "active"
-                  : ""
-              }
-            >
-              Admin
-            </Link>
-          )}
+            {user && (
+              <Link
+                to="/orders"
+                className={
+                  location.pathname ===
+                  "/orders"
+                    ? "active"
+                    : ""
+                }
+              >
+                Orders
+              </Link>
+            )}
 
-        </nav>
+            {user && (
+              <Link
+                to="/profile"
+                className={
+                  location.pathname ===
+                  "/profile"
+                    ? "active"
+                    : ""
+                }
+              >
+                Profile
+              </Link>
+            )}
 
-        {/* NAV ACTIONS */}
+            {isAdmin && (
+              <Link
+                to="/admin"
+                className={
+                  location.pathname ===
+                  "/admin"
+                    ? "active"
+                    : ""
+                }
+              >
+                Admin
+              </Link>
+            )}
 
-        <div className="nav-actions">
+          </nav>
 
-          {!user ? (
-            <>
+          {/* NAV ACTIONS */}
+
+          <div className="nav-actions">
+
+            {!user ? (
+              <>
+                <button
+                  type="button"
+                  className="login-nav-button"
+                  onClick={openLogin}
+                >
+                  Login
+                </button>
+
+                <button
+                  type="button"
+                  className="register-nav-button"
+                  onClick={openRegister}
+                >
+                  Register
+                </button>
+              </>
+            ) : (
               <button
                 type="button"
-                className="login-nav-button"
-                onClick={openLogin}
+                className="logout-button"
+                onClick={logout}
               >
-                Login
+                Logout
               </button>
+            )}
 
-              <button
-                type="button"
-                className="register-nav-button"
-                onClick={openRegister}
-              >
-                Register
-              </button>
-            </>
-          ) : (
-            <button
-              type="button"
-              className="logout-button"
-              onClick={logout}
+            <Link
+              to="/cart"
+              className="cart-button"
             >
-              Logout
-            </button>
-          )}
+              🛒 Cart ({cartCount})
+            </Link>
 
-          <Link
-            to="/cart"
-            className="cart-button"
-          >
-            🛒 Cart ({cartCount})
-          </Link>
+          </div>
 
-        </div>
-
-      </header>
+        </header>
+      )}
 
       {/* APPLICATION ROUTES */}
 
