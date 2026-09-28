@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./Checkout.css";
 
-const API = "http://localhost:8081/api";
+const API = "https://cloud-kitchen-backend-production.up.railway.app/api";
 
 function Checkout({ user, cart, clearCart }) {
   const navigate = useNavigate();

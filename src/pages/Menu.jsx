@@ -10,7 +10,7 @@ function Menu({ foods, cart, addToCart, removeFromCart }) {
     const value = String(food?.imageUrl || "").trim();
     if (!value) return fallbackImage;
     if (value.startsWith("http://") || value.startsWith("https://") || value.startsWith("data:")) return value;
-    return `http://localhost:8081${value.startsWith("/") ? value : `/${value}`}`;
+    return `https://cloud-kitchen-backend-production.up.railway.app${value.startsWith("/") ? value : `/${value}`}`;
   };
 
   const filteredFoods = useMemo(() => foods.filter((food) => {

@@ -20,7 +20,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import "./App.css";
 import "./Auth.css";
 
-const API = "http://localhost:8081/api";
+const API = "https://cloud-kitchen-backend-production.up.railway.app/api";
 
 function AppContent() {
   const navigate = useNavigate();

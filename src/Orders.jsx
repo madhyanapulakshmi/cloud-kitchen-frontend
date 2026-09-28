@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./Orders.css";
 
-const API = "http://localhost:8081/api";
+const API = "https://cloud-kitchen-backend-production.up.railway.app/api";
 
 const TRACKING_STEPS = [
   {

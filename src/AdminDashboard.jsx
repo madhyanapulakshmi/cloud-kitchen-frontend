@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import "./AdminDashboard.css";
 
-const API = "http://localhost:8081/api";
+const API = "https://cloud-kitchen-backend-production.up.railway.app/api";
 
 const STATUS_FLOW = [
   "PLACED",
